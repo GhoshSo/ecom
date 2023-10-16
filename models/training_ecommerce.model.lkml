@@ -15,6 +15,9 @@ persist_with: training_ecommerce_default_datagroup
 label: "E-Commerce Training"
 
 explore: order_items {
+  always_filter: {
+    filters: [order_items.status: "Complete", users.country: "USA"]
+  }
   join: users {
     type: left_outer
     sql_on: ${order_items.user_id} = ${users.id} ;;
